@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/activity_tracker/db" NAME="Activity Tracker" VERSION="2024052600" COMMENT="Time Tracker Plugin">
+    <TABLES>
+        <TABLE NAME="block_activity_tracker_log" COMMENT="Log table for course views">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the user"/>
+                <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the course"/>
+                <FIELD NAME="moduleid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the module"/>
+                <FIELD NAME="starttime" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Start time of the interaction"/>
+                <FIELD NAME="endtime" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Start time of the interaction"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+            </KEYS>
+        </TABLE>
+    </TABLES>
+</XMLDB>
