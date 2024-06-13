@@ -1,24 +1,25 @@
 <?php
 
 require_once('../../config.php');
-require_login(); // Ensure the user is logged in
+require_login();
 
 global $DB, $USER;
 
-$userid = required_param('userid', PARAM_INT);
-$courseid = required_param('courseid', PARAM_INT);
-$moduleid = required_param('moduleid', PARAM_INT);
-$starttime = required_param('starttime', PARAM_INT);
-$endtime = required_param('endtime', PARAM_INT);
+$payload = file_get_contents('php://input');
+$data = json_decode($payload, true);
 
-$record = new stdClass();
-$record->userid = $userid;
-$record->courseid = $courseid;
-$record->moduleid = $moduleid;
-$record->starttime = $starttime;
-$record->endtime = time();
+if ($data) {
+    $record = new stdClass();
+    $record->userid = $data['userid'];
+    $record->courseid = $data['courseid'];
+    $record->moduleid = $data['moduleid'];
+    $record->starttime = $data['starttime'];
+    $record->endtime = time();
 
-// Insert or update the database
-$DB->insert_record('block_activity_tracker_log', $record); // Assume 'activity_tracker' is your custom table
+    $DB->insert_record('block_activity_tracker_log', $record);
 
-error_log("Inserted record into database");
+    error_log("ACTIVITY LOGGED IN DATABASE");
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'No data received']);
+    error_log("FAILED TO LOGG DATA IN DATABASE");
+}

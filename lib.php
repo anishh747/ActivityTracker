@@ -12,11 +12,11 @@ function block_activity_tracker_page_init(moodle_page $page) {
     // ]));
 }
 
-function block_activity_tracker_extend_navigation_course($courseid, $contextinstanceid) {
+function block_activity_tracker_extend_navigation_course() {
     global $PAGE;
-    // $PAGE->requires->js(new moodle_url('/blocks/activity_tracker/js/tracktime.js'));
-    // $PAGE->requires->js_init_call('random_function');
-    // block_activity_tracker_page_init($PAGE);
+    if ($PAGE->pagelayout == 'course' || $PAGE->pagelayout == 'mod') {
+        $PAGE->requires->js(new moodle_url('/blocks/activity_tracker/js/focus_tracking.js'));
+    }
 }
 
 // function random_function() {

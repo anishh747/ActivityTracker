@@ -1,4 +1,4 @@
-<?php
+    <?php
 defined('MOODLE_INTERNAL') || die();
 
 
@@ -17,3 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
 JS
     );
 }
+
+// function track_page_focus() {
+//     global $PAGE, $USER;
+//     $PAGE->requires->js(new moodle_url('/blocks/activity_tracker/js/focus_tracking.js'));
+//     $PAGE->requires->js_init_call('track_idle_time');
+//     $PAGE->requires->js_init_call('check_page_focus');
+// }
